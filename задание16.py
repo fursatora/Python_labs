@@ -1,14 +1,12 @@
 #13 Дан целочисленный массив. Необходимо разместить элементы, расположенные до минимального, в конце массива.
-def move_elements(arr):
-    if not arr:
-        return arr
+arr = input("Введите массив: ").split()
+arr = [int(x) for x in arr]  # Преобразуем строки в целые числа
 
-    min_val = min(arr)
-    min_index = arr.index(min_val)
-    return arr[:min_index] + arr[min_index + 1:] + [min_val]
+min_index = arr.index(min(arr))
+before_min = arr[:min_index]
+after_min = arr[min_index:]
 
-arr = list(map(int, input("Введите массив: ").split()))
-modified_arr = move_elements(arr)
+new_arr = after_min + before_min
 
-print("Массив после перемещения:")
-print(modified_arr)
+print("Массив после размещения элементов до минимального в конце:")
+print(new_arr)
