@@ -1,2 +1,2 @@
 # python_labs
-lab1 - вариант 1
+lab4 - вариант 3
