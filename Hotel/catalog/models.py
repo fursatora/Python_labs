@@ -7,6 +7,7 @@ class Room(models.Model):
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
     objects = models.Manager()
 
+
     def __str__(self):
         return self.room_number
 
@@ -18,7 +19,7 @@ class Guest(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.firstname} {self.lastname}"
 
 class Booking(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)

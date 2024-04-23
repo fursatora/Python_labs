@@ -1,50 +1,81 @@
 {% extends "base_generic.html" %}
 {% block content%}
-            <div class="col-md-8 col-lg-9 content-container">
-                <h1 class="h3 text-center mt-3">Общая информация</h1>
-                <h2 class="lead text-center"></h2>
-                <hr class="mb-5">
-                <section >
-                    <a class="btn btn-success" href="{% url 'guest_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Добавить гостя</a>
-                    <h1> </h1>
-                    <h1> </h1>
-                    <h4>Список гостей</h4>
-                    <table id="mytable">
-                        <tr>
-                            <th></th>
-                            <th>Имя</th>
-                            <th>Фамилия</th>
-                        </tr>
-                        {% for guest in guests %}
-                        <tr><td><a href="{% url 'guest_detail' pk=guest.pk %}" class="top-menu"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                            <td>{{ guest.firstname }}</td>
-                            <td>{{ guest.lastname }}</td>
-                        {% endfor %}
-                    </table>
-                    <hr class="mb-2">
-                </section>
-                <h2 class="lead text-center"></h2>
-                <section >
-                    <a class="btn btn-success" href="{% url 'room_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Добавить комнату</a>
-                    <h1> </h1>
-                    <h1> </h1>
-                    <h4>Список комнат</h4>
-                    <table id="mytable">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Номер</th>
-                            <th>Кол-во гостей</th>
-                            <th>Цена за ночь</th>
-                        </tr>
-                        {% for room in rooms %}
-                            <tr><td><a href="{% url 'room_edit' pk=room.pk %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="{% url 'room_delete' pk=room.pk %}" class="top-menu"><span class="glyphicon glyphicon-trash"></span></a></td>
-                            <td>{{ room.room_number }}</td>
-                            <td>{{ room.capacity }}</td>
-                            <td>{{ room.price_per_night }}</td>
-                        {% endfor %}
-                    </table>
-                </section>
-            </div>
+<div class="col-md-8 col-lg-9 content-container">
+    <h1 class="h3 text-center mt-3">Общая информация</h1>
+    <h2 class="lead text-center"></h2>
+    <hr class="mb-5">
+    <div style="display: flex; justify-content: space-between;">
+        <section style="margin-right: 5px;">
+            <a class="btn btn-success" href="{% url 'guest_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Добавить гостя</a>
+            <h1> </h1>
+            <h1> </h1>
+            <h4>Список гостей</h4>
+            <table id="mytable">
+                <tr>
+                    <th></th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                </tr>
+                {% for guest in guests %}
+                <tr>
+                    <td><a href="{% url 'guest_detail' pk=guest.pk %}" class="top-menu"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                    <td>{{ guest.firstname }}</td>
+                    <td>{{ guest.lastname }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <hr class="mb-2">
+        </section>
+        <section style="margin-left: 5px;">
+            <a class="btn btn-success" href="{% url 'room_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Добавить комнату</a>
+            <h1> </h1>
+            <h1> </h1>
+            <h4>Список комнат</h4>
+            <table id="mytable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Номер</th>
+                    <th>Кол-во гостей</th>
+                    <th>Цена за ночь</th>
+                </tr>
+                {% for room in rooms %}
+                <tr>
+                    <td><a href="{% url 'room_edit' pk=room.pk %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td><a href="{% url 'room_delete' pk=room.pk %}" class="top-menu"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td>{{ room.room_number }}</td>
+                    <td>{{ room.capacity }}</td>
+                    <td>{{ room.price_per_night }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+    <section>
+            <a class="btn btn-success" href="{% url 'booking_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Добавить бронь</a>
+            <h1> </h1>
+            <h1> </h1>
+            <h4>Список броней</h4>
+            <table id="mytable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Гость</th>
+                    <th>Комната</th>
+                    <th>Дата заезда</th>
+                    <th>Дата выезда</th>
+                </tr>
+                {% for booking in bookings %}
+                <tr>
+                    <td><a href="{% url 'booking_edit' pk=booking.pk %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td><a href="{% url 'booking_delete' pk=booking.pk %}" class="top-menu"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td>{{ booking.guest }}</td>
+                    <td>{{ booking.room}}</td>
+                    <td>{{ booking.check_in_date}}</td>
+                    <td>{{ booking.check_out_date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+</div>
 {% endblock content %}

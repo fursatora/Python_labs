@@ -33,3 +33,13 @@ class RoomForm(forms.ModelForm):
             'capacity': forms.RadioSelect(attrs={'name': 'gender'}, choices=capacity_choices),
             'price_per_night': forms.TextInput(attrs={'placeholder': 'руб'}),
         }
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['room', 'guest', 'check_in_date', 'check_out_date']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['room'].queryset = Room.objects.all()
+        self.fields['guest'].queryset = Guest.objects.all()
