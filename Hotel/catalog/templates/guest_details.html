@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block content%}
+            <div class="col-md-8 col-lg-9 content-container" >
+                <h1 class="h3 text-center mt-3">Информация о госте</h1>
+                <h2 class="lead text-center"></h2>
+                <hr class="mb-5">
+                <section >
+                    <div class="guest">
+                        <a class="btn btn-primary" href="{% url 'guest_edit' pk=guest.pk %}"><span class="glyphicon glyphicon-pencil"></span> Изменить</a>
+                        <a class="btn btn-danger" href="{% url 'guest_delete' pk=guest.pk %}"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+                        <a class="btn btn-secondary" href="{% url 'info' %}">Назад к информации</a>
+
+                        <h1>{{ guest.lastname }} {{guest.firstname}}
+                        </h1>
+                        <h5>Номер телефона: {{ guest.phone_number }} </h5>
+                        <h5>E-mail: {{ guest.email }} </h5>
+                    </div>
+                </section>
+            </div>
+{% endblock content %}

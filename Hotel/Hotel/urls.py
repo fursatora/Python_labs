@@ -21,16 +21,15 @@ from catalog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('info/', views.info, name='info'),
+    path('', views.info, name='info'),
 
 
     path('guests/new/', views.guest_new, name='guest_new'),
-    path('guests/<int:pk>/', views.student_detail, name='guest_detail'),
-    path('students/<int:pk>/edit/', views.student_edit, name='guest_edit'),
-    path('students/<int:pk>/delete/', views.student_delete, name='guest_delete'),
+    path('guests/<int:pk>/', views.guest_detail, name='guest_detail'),
+    path('guests/<int:pk>/edit/', views.guest_edit, name='guest_edit'),
+    path('guests/<int:pk>/delete/', views.guest_delete, name='guest_delete'),
 
     path('rooms/new/', views.room_new, name='room_new'),
-    path('workers/<int:pk>/', views.room_detail, name='room_detail'),
-    path('workers/<int:pk>/edit/', views.room_edit, name='room_edit'),
-    path('workers/<int:pk>/delete/', views.room_delete, name='room_delete'),
+    path('rooms/<int:pk>/edit/', views.room_edit, name='room_edit'),
+    path('rooms/<int:pk>/delete/', views.room_delete, name='room_delete'),
 ]

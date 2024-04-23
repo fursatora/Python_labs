@@ -23,7 +23,6 @@ class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
         capacity_choices = ((1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'))
-        model = Guest
         fields=('room_number', 'capacity','price_per_night')
         labels ={
             'room_number': "Номер комнаты",
@@ -32,5 +31,5 @@ class RoomForm(forms.ModelForm):
         }
         widgets = {
             'capacity': forms.RadioSelect(attrs={'name': 'gender'}, choices=capacity_choices),
-            'room_number': forms.TextInput(attrs={'placeholder': 'руб'}),
+            'price_per_night': forms.TextInput(attrs={'placeholder': 'руб'}),
         }
