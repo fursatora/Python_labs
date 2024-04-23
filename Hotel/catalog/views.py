@@ -113,7 +113,7 @@ def booking_edit(request, pk):
 
 def booking_delete(request, pk):
     try:
-        booking = Room.objects.get(pk=pk)
+        booking = Booking.objects.get(pk=pk)
         booking.delete()
         return redirect('info')
     except Booking.DoesNotExist:
