@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Room(models.Model):
-    room_number = models.CharField(max_length=10)
+    room_number = models.CharField(max_length=3)
     capacity = models.IntegerField()
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
 
