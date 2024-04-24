@@ -6,8 +6,8 @@ print("Content-type: text/html; charset=UTF-8\n")
 
 room_form = cgi.FieldStorage()
 room_number = room_form.getfirst("room_number")
-capacity=room_form.getfirst("capacity")
-price=room_form.getfirst("price")
+capacity = room_form.getfirst("capacity")
+price = room_form.getfirst("price")
 
 # Создание подключения к базе данных
 conn = sqlite3.connect('cgi-bin/hotel.db')
@@ -32,7 +32,7 @@ print("<tr><th>Номер комнаты</th><th>Вместимость</th><th>
 for row in rows:
     print("<tr><td>{}</td><td>{}</td></tr>".format(row[1], row[2],row[3]))
 print("</table>")
-print("<a href='index.html'>На главную</a>")
+print("<a href='/python_labs/index.html'>На главную</a>")
 
 conn.close()
 

@@ -34,6 +34,6 @@ print("<tr><th>Имя</th><th>Email</th></tr>")
 for row in rows:
     print("<tr><td>{}</td><td>{}</td></tr>".format(row[1], row[2]))
 print("</table>")
-
+print("<a href='index.html'>На главную</a>")
 conn.close()
 

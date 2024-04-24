@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Форма бронирования</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Форма бронирования</h1>
+    <table>
+        <form action="/cgi-bin/insert_booking.py" method="post">
+            <tr>
+                <th>Гость:</th>
+                <td>
+                    <select name="guest_id" id="guest_id">
+                        {% for guest_id, name in guests%}
+                        <option value="{guest_id}">{name}</option>
+                        {/for}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Номер комнаты:</th>
+                <td>
+                    <select name="room_number" id="room_number">
+                        {for room_number, capacity, price in rooms}
+                        <option value="{room_number}">Номер {room_number}</option>
+                        {/for}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Дата заезда:</th>
+                <td><input type="date" name="check_in_date" id="check_in_date" required></td>
+            </tr>
+            <tr>
+                <th>Дата выезда:</th>
+                <td><input type="date" name="check_out_date" id="check_out_date" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><input type="submit" value="Забронировать"></td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>
