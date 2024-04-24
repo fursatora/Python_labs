@@ -2,12 +2,11 @@
 import sqlite3
 import cgi
 
-# Подключение к базе данных
-conn = sqlite3.connect('hotel.db')
-cursor = conn.cursor()
-
-# Создание HTML-заголовка
 print("Content-type: text/html\n")
+
+# Подключение к базе данных
+conn = sqlite3.connect('cgi-bin/hotel.db')
+cursor = conn.cursor()
 
 # Получение данных из таблицы и формирование HTML-кода
 cursor.execute('SELECT * FROM rooms')

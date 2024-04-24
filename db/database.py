@@ -8,7 +8,7 @@ root = doc.createElement('table')
 doc.appendChild(root)
 
 # Подключение к базе данных
-conn = sqlite3.connect('cgi-bin/hotel.db')
+conn = sqlite3.connect('../cgi-bin/hotel.db')
 cursor = conn.cursor()
 
 # Создание таблиц

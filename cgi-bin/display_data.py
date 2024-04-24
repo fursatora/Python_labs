@@ -3,7 +3,7 @@ import sqlite3
 import cgi
 
 # Создание подключения к базе данных
-conn = sqlite3.connect('hotel.db')
+conn = sqlite3.connect('cgi-bin/hotel.db')
 c = conn.cursor()
 
 # Выполнение SQL-запроса для получения данных
@@ -18,15 +18,6 @@ form = cgi.FieldStorage()
 name = form.getfirst("name")
 email = form.getfirst("email")
 
-# Создание подключения к базе данных
-conn = sqlite3.connect('hotel.db')
-c = conn.cursor()
-
-sql='''\
-INSERT INTO Guests (name, email) VALUES (?, ?)
-'''
-# Вставка данных в таблицу
-c.executemany(sql,(name, email))
 
 for room in rooms:
   print(room)
